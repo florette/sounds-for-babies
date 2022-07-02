@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <title>Music Player</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="menu">
+        <a href="index.html" class="menu__btn"
+          ><i class="fas fa-music"></i><span>Comptines</span></a
+        >
+        <a href="vehicules.html" class="menu__btn"
+          ><i class="fas fa-car-side"></i><span>Véhicules</span></a
+        >
+        <a href="animaux.html" class="menu__btn"
+          ><i class="fas fa-paw"></i><span>Animaux</span></a
+        >
+      </div>
+      <div class="music-container player">
+        <div id="cover-box">
+          <img
+            src="assets/images/souris-verte.jpg"
+            alt="cover-image"
+            id="cover"
+          />
+        </div>
+        <div id="music-box">
+          <audio id="disc"></audio>
+          <div id="music-info">
+            <h2 id="title"></h2>
+            <div id="progress-container">
+              <div id="progress"></div>
+            </div>
+            <div id="timer-bar">
+              <span id="timer">0:00</span>
+              <span id="duration"></span>
+            </div>
+          </div>
+          <div id="control-box">
+            <i id="prev" class="btn fas fa-backward"></i>
+            <i id="play" class="special-btn fas fa-play"></i>
+            <i id="next" class="btn fas fa-forward"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/scripts/script.js"></script>
+    <script>
+      // Play/Pause when play button clicked
+      play.addEventListener("click", playPauseMedia);
+
+      // Various events on disc
+      disc.addEventListener("play", updatePlayPauseIcon);
+      disc.addEventListener("pause", updatePlayPauseIcon);
+      disc.addEventListener("timeupdate", updateProgress);
+      disc.addEventListener("ended", gotoNextSong.bind(null, true));
+
+      // Go to next song when next button clicked
+      prev.addEventListener("click", gotoPreviousSong);
+
+      // Go to previous song when previous button clicked
+      next.addEventListener("click", gotoNextSong.bind(null, false));
+
+      // Move to different place in the song
+      progressContainer.addEventListener("click", setProgress);
+
+      window.onload = function () {
+        playFromList();
+      };
+    </script>
+  </body>
+</html>
